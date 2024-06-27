@@ -1,10 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const resultElement = document.getElementById('result');
-    
+    const proxyUrl = '';
+    const apiUrl = 'https://swift-uganda-short.functions.on-fleek.app';
+
     try {
-        const response = await fetch('https://swift-uganda-short.functions.on-fleek.app');
-        const data = await response.json();
-        resultElement.textContent = JSON.stringify(data, null, 2);
+        fetch(apiUrl)
+      .then(response => {console.log(response); response.json()})
+      .then(json => {
+        resultElement.textContent = JSON.stringify(json, null, 2);
+        console.log(json)}
+    )
+
+        
     } catch (error) {
         resultElement.textContent = 'Error fetching data: ' + error.message;
     }
